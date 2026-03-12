@@ -1,0 +1,18 @@
+{
+    "name": "GonDraz.Selectable",
+    "rootNamespace": "",
+    "references": [
+        "GUID:111d4e39aeddad44898002abada9c174",
+        "GUID:0f9c5e358be776242b420d13b4365156",
+        "GUID:80ecb87cae9c44d19824e70ea7229748"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

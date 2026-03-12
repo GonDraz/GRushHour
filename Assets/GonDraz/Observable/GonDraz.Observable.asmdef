@@ -1,0 +1,16 @@
+{
+    "name": "GonDraz.Observable",
+    "rootNamespace": "",
+    "references": [
+        "GonDraz.GEvent"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

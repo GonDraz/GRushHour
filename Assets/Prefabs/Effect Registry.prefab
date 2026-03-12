@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7484186878627535192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4009615172076248224}
+  - component: {fileID: 6894454054599849691}
+  - component: {fileID: 706755062603512836}
+  - component: {fileID: 5031009310069311880}
+  m_Layer: 0
+  m_Name: Effect Registry
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4009615172076248224
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484186878627535192}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &6894454054599849691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484186878627535192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GonDraz.Effects.Core.EffectRegistry
+  canvas: {fileID: 706755062603512836}
+  effectPrefabs:
+  - key: HoleFloatingTextEffect
+    prefab: {fileID: 4037713139403357369, guid: 86ddd72a22e6f6f40bf1e7d00f30eefa, type: 3}
+    preloadCount: 15
+  - key: HoleMultiplierFloatingTextEffect
+    prefab: {fileID: 7219675480987468822, guid: 16df834addb796e4fbbc1026ece12c1f, type: 3}
+    preloadCount: 5
+  - key: BubbleBurstEffect
+    prefab: {fileID: 8813400353163957669, guid: 5a88d06ca95c84b49a818353ccb126c0, type: 3}
+    preloadCount: 25
+  - key: StreakEffect
+    prefab: {fileID: 6129427250274095090, guid: a2f46250e7fd57349912a0f4dd2a8542, type: 3}
+    preloadCount: 1
+  - key: BubbleExitHoleEffect
+    prefab: {fileID: 7153961203205861345, guid: 5e66bd2aaafbfb84fbc72d4f015793e5, type: 3}
+    preloadCount: 5
+  - key: OverTakeEnemyEffect
+    prefab: {fileID: 8387927334956908993, guid: a140090a878651a44b6e3d27170cd905, type: 3}
+    preloadCount: 1
+  - key: NewHighScoreEffect
+    prefab: {fileID: 615911030209508296, guid: 01b87beccdd0ce8489fe7b5ec49d7ec1, type: 3}
+    preloadCount: 0
+  - key: BubbleBurstScoreEffect
+    prefab: {fileID: 615911030209508296, guid: 541e2afaed114424f8b65bd7ce04b499, type: 3}
+    preloadCount: 25
+  - key: OpenGiftBoxInGameEffect
+    prefab: {fileID: 5861329241102862735, guid: fea7413177e8c19488bb11032e4735b2, type: 3}
+    preloadCount: 0
+  - key: NewBonusEffect
+    prefab: {fileID: 615911030209508296, guid: 39a52d95a97a59445bef3976bec57351, type: 3}
+    preloadCount: 1
+  - key: TextMultiplierScoreEffect
+    prefab: {fileID: 2338504367878217139, guid: 9164329369b43784a8869e01716007ad, type: 3}
+    preloadCount: 1
+  - key: CardAchievementCompleteEffect
+    prefab: {fileID: 5828905838317149303, guid: d1f848f8adc61284e9b2c581612dfa93, type: 3}
+    preloadCount: 0
+  - key: OpenGiftProgressEffect
+    prefab: {fileID: 3319810143527487669, guid: d082935b0d905a1498ba4982290b4885, type: 3}
+    preloadCount: 0
+--- !u!223 &706755062603512836
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484186878627535192}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 200
+  m_TargetDisplay: 0
+--- !u!114 &5031009310069311880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484186878627535192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1080, y: 1920}
+  m_ScreenMatchMode: 1
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0

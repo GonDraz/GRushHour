@@ -1,0 +1,18 @@
+{
+    "name": "GonDraz.UI.Route",
+    "rootNamespace": "",
+    "references": [
+        "GonDraz.Base",
+        "GonDraz.Extensions",
+        "GonDraz.UI"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

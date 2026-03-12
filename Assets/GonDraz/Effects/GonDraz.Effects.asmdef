@@ -1,0 +1,20 @@
+{
+    "name": "GonDraz.Effect",
+    "rootNamespace": "",
+    "references": [
+        "GonDraz.Base",
+        "GonDraz.ObjectPool",
+        "GonDraz.GEvent",
+        "PrimeTween.Runtime",
+        "GonDraz.Extensions"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
