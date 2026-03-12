@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: dc167f39582e74247b03f7ba5738da02
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157971
+  packageName: Notch Solution
+  packageVersion: 2.0.0
+  assetPath: Assets/NotchSolution/Runtime/Base/Adaptation/PerEdgeAdaptations.cs
+  uploadId: 471898

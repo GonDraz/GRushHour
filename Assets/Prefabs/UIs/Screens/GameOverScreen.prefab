@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5974432453594802449
 RectTransform:
   m_ObjectHideFlags: 0
@@ -76,8 +76,8 @@ MonoBehaviour:
   showDuration: 0.25
   hideDuration: 0.125
   gameOverSound:
-    ID: 1073741826
-    _sourceAsset: {fileID: 11400000, guid: 273260349824edd4ea5abff7ce273880, type: 2}
+    ID: 0
+    _sourceAsset: {fileID: 0}
     <DebugObject>k__BackingField: {fileID: 1767841888994442001}
   scoreText: {fileID: 1591612402987467760}
   highScoreText: {fileID: 5469038262104933759}
@@ -874,9 +874,17 @@ PrefabInstance:
       value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 8882086045478635957, guid: 04eb974e6b42f0c4e86e5744ecb15ca3, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8882086045478635957, guid: 04eb974e6b42f0c4e86e5744ecb15ca3, type: 3}
       propertyPath: m_fontSizeMax
       value: 52
       objectReference: {fileID: 0}
+    - target: {fileID: 8882086045478635957, guid: 04eb974e6b42f0c4e86e5744ecb15ca3, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 9098817693267327320, guid: 04eb974e6b42f0c4e86e5744ecb15ca3, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1028,9 +1036,17 @@ PrefabInstance:
       value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 8882086045478635957, guid: 04eb974e6b42f0c4e86e5744ecb15ca3, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8882086045478635957, guid: 04eb974e6b42f0c4e86e5744ecb15ca3, type: 3}
       propertyPath: m_fontSizeMax
       value: 52
       objectReference: {fileID: 0}
+    - target: {fileID: 8882086045478635957, guid: 04eb974e6b42f0c4e86e5744ecb15ca3, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 9098817693267327320, guid: 04eb974e6b42f0c4e86e5744ecb15ca3, type: 3}
       propertyPath: m_Sprite
       value: 

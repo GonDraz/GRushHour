@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3afc4ec84834809b37b85810be963d7, type: 3}
+  m_Name: Feel Button
+  m_EditorClassIdentifier: Assembly-CSharp::GonDraz.UI.Selectable.SelectableEffectConfig
+  buttonClickSound:
+    ID: 1073741833
+    _sourceAsset: {fileID: 11400000, guid: 273260349824edd4ea5abff7ce273880, type: 2}
+    <DebugObject>k__BackingField: {fileID: 0}
+  pointerDown:
+    duration: 0.125
+    rotation: {x: 0, y: 0, z: 0}
+    scale: {x: 0.9, y: 0.9, z: 0.9}
+    alpha: 0.85
+    ease: 6
+  pointerUp:
+    duration: 0.5
+    rotation: {x: -0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+    alpha: 1
+    ease: 24

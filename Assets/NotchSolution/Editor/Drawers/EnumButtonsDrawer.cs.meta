@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f6dcc8bbfaadf4732a6d7b8bf2b47b98
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157971
+  packageName: Notch Solution
+  packageVersion: 2.0.0
+  assetPath: Assets/NotchSolution/Editor/Drawers/EnumButtonsDrawer.cs
+  uploadId: 471898

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 43069765f1e8bae4f9f66b00bc7ee800
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157971
+  packageName: Notch Solution
+  packageVersion: 2.0.0
+  assetPath: Assets/NotchSolution/Editor/Devices/Apple iPhone X.device.json
+  uploadId: 471898

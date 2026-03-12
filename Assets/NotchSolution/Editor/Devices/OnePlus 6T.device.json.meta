@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e85d0962651aa4b46a89e6c5e4b67091
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157971
+  packageName: Notch Solution
+  packageVersion: 2.0.0
+  assetPath: Assets/NotchSolution/Editor/Devices/OnePlus 6T.device.json
+  uploadId: 471898

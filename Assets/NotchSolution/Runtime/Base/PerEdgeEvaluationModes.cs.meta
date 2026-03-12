@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 4b93a0a925fd94128955fdfa491d6abf
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157971
+  packageName: Notch Solution
+  packageVersion: 2.0.0
+  assetPath: Assets/NotchSolution/Runtime/Base/PerEdgeEvaluationModes.cs
+  uploadId: 471898

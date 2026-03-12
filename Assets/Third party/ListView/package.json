@@ -1,0 +1,34 @@
+{
+  "name": "com.mahas.listview",
+  "version": "1.0.1",
+  "displayName": "ListView",
+  "description": "High-performance virtualized ListView for Unity UI with item recycling, optimized rendering and smooth scrolling for large datasets.",
+  "unity": "2021.3",
+  "author": {
+    "name": "Dmytro Mahas",
+    "email": "magas.dm99@gmail.com",
+    "url": "https://github.com/MagasDeveloper/ListView.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+  },
+  "keywords": [
+    "unity",
+    "tools",
+    "plugin",
+	"listview"
+  ],
+  "samples": [
+    {
+      "displayName": "Game Missions",
+      "description": "A horizontal virtualized list showcasing mission cards, dynamic data updates, and smooth scrolling.",
+      "path": "Samples~/Missions-HorizontalList"
+    },
+    {
+      "displayName": "User Ratings",
+      "description": "A vertical list example demonstrating item recycling, real-time binding, and efficient UI performance.",
+      "path": "Samples~/Rating-VerticalList"
+    }
+    ],
+  "documentationUrl": "https://github.com/MagasDeveloper/ListView#readme"
+}

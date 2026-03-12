@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f35e2ac1ee0087741937a773d3ca6667
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157971
+  packageName: Notch Solution
+  packageVersion: 2.0.0
+  assetPath: Assets/NotchSolution/Editor/Simulator/GameViewResolution.cs
+  uploadId: 471898

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: cb167ee7953de4241ac2a682af593c8d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157971
+  packageName: Notch Solution
+  packageVersion: 2.0.0
+  assetPath: Assets/NotchSolution/Runtime/Base/NotchSolutionUIBehaviourBase.cs
+  uploadId: 471898

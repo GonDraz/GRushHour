@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 744afe68bd0bc0348b1f8f9fa02f10fe
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157971
+  packageName: Notch Solution
+  packageVersion: 2.0.0
+  assetPath: Assets/NotchSolution/Editor/Devices/Samsung Galaxy S10.device.json
+  uploadId: 471898

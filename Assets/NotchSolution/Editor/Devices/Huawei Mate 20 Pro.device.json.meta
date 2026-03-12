@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6356145d8034d1d4c8e5ad5a7b8a745d
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157971
+  packageName: Notch Solution
+  packageVersion: 2.0.0
+  assetPath: Assets/NotchSolution/Editor/Devices/Huawei Mate 20 Pro.device.json
+  uploadId: 471898

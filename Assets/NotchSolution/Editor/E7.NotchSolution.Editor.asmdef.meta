@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 99e2f6ff9839f476ea1d7beb9ff1bb68
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157971
+  packageName: Notch Solution
+  packageVersion: 2.0.0
+  assetPath: Assets/NotchSolution/Editor/E7.NotchSolution.Editor.asmdef
+  uploadId: 471898

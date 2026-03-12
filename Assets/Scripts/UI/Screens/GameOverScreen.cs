@@ -1,7 +1,6 @@
 ﻿using System;
 using Ami.BroAudio;
 using GlobalState;
-using GonDraz.Events;
 using GonDraz.UI;
 using Managers;
 using PrimeTween;
@@ -42,15 +41,11 @@ namespace UI.Screens
             }
         }
 
-        public void OnHomeButtonClick()
-        {
-            GlobalStateMachine.Change<GlobalStateMachine.MenuState>(false);
-        }
 
         public void OnRestartButtonClick()
         {
             GlobalStateMachine.Change<GlobalStateMachine.InGameState>(false);
-            // BaseEventManager.SetupGamePlay?.Invoke();
+            EventManager.SetupGameplay.Invoke();
         }
     }
 }

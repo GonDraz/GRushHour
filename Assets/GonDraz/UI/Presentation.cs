@@ -2,6 +2,7 @@ using System;
 using GonDraz.Base;
 using GonDraz.Extensions;
 using PrimeTween;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace GonDraz.UI
@@ -23,7 +24,6 @@ namespace GonDraz.UI
         {
             ResetUI();
         }
-
 
         protected override void OnDestroy()
         {
@@ -59,6 +59,7 @@ namespace GonDraz.UI
             return true;
         }
 
+        [Button]
         public virtual void Show(Action callback = null)
         {
             Active();
@@ -71,6 +72,7 @@ namespace GonDraz.UI
             });
         }
 
+        [Button]
         public virtual void Hide(Action callback = null)
         {
             CanvasGroup.blocksRaycasts = false; // Block all clicks during hide

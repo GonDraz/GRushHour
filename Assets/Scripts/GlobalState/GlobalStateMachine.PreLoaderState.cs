@@ -1,5 +1,4 @@
 ﻿using GonDraz.Events;
-using Managers;
 
 namespace GlobalState
 {
@@ -23,14 +22,7 @@ namespace GlobalState
 
             private void ApplicationLoadFinished()
             {
-                if (ScoreManager.HighScore.Value == 0)
-                {
-                    Host.ChangeState<InGameState>();
-                }
-                else
-                {
-                    Host.ChangeState<MenuState>();
-                }
+                Host.ChangeState<MenuState>();
             }
         }
     }

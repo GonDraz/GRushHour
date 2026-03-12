@@ -72,7 +72,7 @@ namespace GonDraz.UI.Selectable
             if (!config) return;
 
             var cfg = config.pointerDown;
-            config.buttonClickSound.Play();
+            if(config.buttonClickSound.IsValid()) config.buttonClickSound.Play();
             PlaySequence(cfg);
         }
 

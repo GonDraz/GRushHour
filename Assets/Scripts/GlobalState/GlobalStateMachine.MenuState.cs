@@ -1,5 +1,4 @@
-﻿using GonDraz.ObjectPool;
-using GonDraz.UI.Route;
+﻿using GonDraz.UI.Route;
 using UI.Screens;
 
 namespace GlobalState
@@ -10,7 +9,6 @@ namespace GlobalState
         {
             public override void OnEnter()
             {
-                PoolManager.ReturnAll();
                 base.OnEnter();
                 RouteManager.Go(typeof(MenuScreen));
             }

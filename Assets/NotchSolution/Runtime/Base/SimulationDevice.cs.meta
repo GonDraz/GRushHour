@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 18c0211a43eefd048b642965a064db64
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157971
+  packageName: Notch Solution
+  packageVersion: 2.0.0
+  assetPath: Assets/NotchSolution/Runtime/Base/SimulationDevice.cs
+  uploadId: 471898

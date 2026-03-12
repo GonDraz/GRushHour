@@ -1,23 +1,15 @@
-﻿using System;
-using GlobalState;
-using GonDraz.UI;
+﻿using GonDraz.UI;
+using Managers;
 
 namespace UI.Screens
 {
     public class GameWonScreen : Presentation
     {
-        public override void Show(Action callback = null)
-        {
-            base.Show(callback);
-        }
-
-        public void OnHomeButtonClick()
-        {
-            GlobalStateMachine.Change<GlobalStateMachine.MenuState>(false);
-        }
-
         public void OnNextLevelButtonClick()
         {
+            // Tiến level tiếp theo và bắt đầu chơi
+            // Advance to the next level and start gameplay.
+            LevelManager.PlayNextLevel();
         }
     }
 }
