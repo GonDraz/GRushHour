@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using GonDraz.Base;
 using GonDraz.ObjectPool;
+using Managers;
 using PrimeTween;
 using Puzzle.Core;
+using Puzzle.Data;
 using UnityEngine;
 
 namespace Puzzle.Presentation
@@ -35,6 +37,8 @@ namespace Puzzle.Presentation
         [SerializeField] private Color exitIndicatorColor     = new(0.2f, 0.85f, 0.3f, 1f);
         [SerializeField] private float exitIndicatorThickness = 20f;
         [SerializeField] private float exitIndicatorGap       = 6f;
+        [Tooltip("Thời gian (giây) target block trượt qua exit. (Seconds for the target block to slide through the exit.)")]
+        [SerializeField] private float exitAnimationDuration  = 0.45f;
 
         [Header("Grid (Lưới)")]
         [SerializeField] private bool  showGrid    = true;
@@ -70,6 +74,9 @@ namespace Puzzle.Presentation
         private Vector2 _boardOriginOffset;
         private float   _totalBoardW;
         private float   _totalBoardH;
+        // Kích thước ô thực tế: tính từ boardRoot.rect khi hợp lệ, fallback về cellSize (inspector).
+        // Actual cell size: derived from boardRoot.rect when valid, falls back to inspector cellSize.
+        private Vector2 _actualCellSize;
 
         // ── Drag state ────────────────────────────────────────────────────────────────
         private bool      _isSolved;
@@ -122,8 +129,8 @@ namespace Puzzle.Presentation
             var stepsDown  = board.QueryMaxSteps(blockId, Vector2Int.down);
             var stepsUp    = board.QueryMaxSteps(blockId, Vector2Int.up);
 
-            var unitH = cellSize.x + cellSpacing.x;
-            var unitV = cellSize.y + cellSpacing.y;
+            var unitH = _actualCellSize.x + cellSpacing.x;
+            var unitV = _actualCellSize.y + cellSpacing.y;
 
             _horizBack  = -stepsLeft  * unitH;
             _horizFront =  stepsRight * unitH;
@@ -203,7 +210,7 @@ namespace Puzzle.Presentation
             if (_activeAxis == Vector2Int.zero)
                 axisX = Mathf.Abs(dragDelta.x) >= Mathf.Abs(dragDelta.y);
 
-            var unitDistance = axisX ? cellSize.x + cellSpacing.x : cellSize.y + cellSpacing.y;
+            var unitDistance = axisX ? _actualCellSize.x + cellSpacing.x : _actualCellSize.y + cellSpacing.y;
             var rawDistance  = axisX ? dragDelta.x : dragDelta.y;
 
             if (Mathf.Abs(rawDistance) < unitDistance * 0.35f)
@@ -257,14 +264,20 @@ namespace Puzzle.Presentation
 
         private void ComputeBoardOriginOffset()
         {
-            var board   = controller.Board;
-            _totalBoardW = board.Width  * cellSize.x + Mathf.Max(0, board.Width  - 1) * cellSpacing.x;
-            _totalBoardH = board.Height * cellSize.y + Mathf.Max(0, board.Height - 1) * cellSpacing.y;
+            var board = controller.Board;
 
+            // Kích thước cố định từ inspector — không phụ thuộc độ phân giải màn hình.
+            // Fixed size from inspector — independent of screen resolution.
+            _actualCellSize = cellSize;
+            _totalBoardW = board.Width  * _actualCellSize.x + Mathf.Max(0, board.Width  - 1) * cellSpacing.x;
+            _totalBoardH = board.Height * _actualCellSize.y + Mathf.Max(0, board.Height - 1) * cellSpacing.y;
+
+            // Đặt boardRoot đúng bằng kích thước board — boardRoot.pivot phải là (0.5, 0.5).
+            // Resize boardRoot to exactly fit the board — boardRoot.pivot must be (0.5, 0.5).
             if (boardRoot != null)
                 boardRoot.sizeDelta = new Vector2(_totalBoardW, _totalBoardH);
 
-            // With block pivot=(0,1): cell(0,0) top-left = (-totalW/2, +totalH/2) for invertY=true
+            // cell(0,0) top-left = (-totalW/2, +totalH/2) khi invertY=true và pivot=(0,1).
             _boardOriginOffset = new Vector2(
                 -_totalBoardW * 0.5f,
                  invertY ? _totalBoardH * 0.5f : -_totalBoardH * 0.5f
@@ -316,7 +329,7 @@ namespace Puzzle.Presentation
             foreach (var c in _cellBuffer)
                 normalized.Add(new Vector2Int(c.x - minX, c.y - minY));
 
-            view.SetupCellImages(normalized, cellSize, cellSpacing, invertY);
+            view.SetupCellImages(normalized, _actualCellSize, cellSpacing, invertY);
         }
 
         // ── Movement arrows ───────────────────────────────────────────────────────────
@@ -373,7 +386,7 @@ namespace Puzzle.Presentation
         /// </summary>
         private void BuildExitViews()
         {
-            var cx = cellSize.x;    var cy = cellSize.y;
+            var cx = _actualCellSize.x; var cy = _actualCellSize.y;
             var sx = cellSpacing.x; var sy = cellSpacing.y;
             var tw = _totalBoardW;  var th = _totalBoardH;
             var t  = exitIndicatorThickness;
@@ -438,13 +451,13 @@ namespace Puzzle.Presentation
         // Y-coord (top-left, pivot=(0,1)) of the given board ROW — matches block Y
         private float ExitRowY(int rowIndex)
         {
-            var y = rowIndex * (cellSize.y + cellSpacing.y);
+            var y = rowIndex * (_actualCellSize.y + cellSpacing.y);
             return (invertY ? -y : y) + _boardOriginOffset.y;
         }
 
         // X-coord of the given board COLUMN — matches block X
         private float ExitColX(int colIndex)
-            => colIndex * (cellSize.x + cellSpacing.x) + _boardOriginOffset.x;
+            => colIndex * (_actualCellSize.x + cellSpacing.x) + _boardOriginOffset.x;
 
         // Pixel length of an exit that spans <length> cells
         private static float ExitSpan(int length, float size, float spacing)
@@ -477,8 +490,8 @@ namespace Puzzle.Presentation
             var heightCells = maxY - minY + 1;
 
             rect.sizeDelta = new Vector2(
-                widthCells  * cellSize.x + Mathf.Max(0, widthCells  - 1) * cellSpacing.x,
-                heightCells * cellSize.y + Mathf.Max(0, heightCells - 1) * cellSpacing.y
+                widthCells  * _actualCellSize.x + Mathf.Max(0, widthCells  - 1) * cellSpacing.x,
+                heightCells * _actualCellSize.y + Mathf.Max(0, heightCells - 1) * cellSpacing.y
             );
         }
 
@@ -510,8 +523,8 @@ namespace Puzzle.Presentation
 
         private Vector2 CellToAnchoredPosition(Vector2Int cell)
         {
-            var x = cell.x * (cellSize.x + cellSpacing.x);
-            var y = cell.y * (cellSize.y + cellSpacing.y);
+            var x = cell.x * (_actualCellSize.x + cellSpacing.x);
+            var y = cell.y * (_actualCellSize.y + cellSpacing.y);
             if (invertY) y = -y;
             return new Vector2(x, y) + _boardOriginOffset;
         }
@@ -528,11 +541,105 @@ namespace Puzzle.Presentation
         private void OnSolved()
         {
             _isSolved = true;
+
             // Ẩn hết mũi tên khi puzzle đã giải xong
+            // Hide all movement arrows when the puzzle is solved.
             if (showMovementArrows)
                 foreach (var view in _views.Values)
                     view.UpdateArrows(false, false, false, false);
-            Debug.Log("[Puzzle] Solved — input disabled.", this);
+
+            // Phát animation target trượt qua exit, sau đó mới fire PuzzleSolved
+            // Play the exit-slide animation, then fire PuzzleSolved when done.
+            PlayExitAnimation();
+        }
+
+        /// <summary>
+        ///     Trượt target block ra khỏi board qua exit, sau đó fire <see cref="EventManager.PuzzleSolved" />.
+        ///     (Slides the target block off the board through its exit, then fires PuzzleSolved.)
+        /// </summary>
+        private void PlayExitAnimation()
+        {
+            var board    = controller.Board;
+            var targetId = board.TargetBlockId;
+
+            if (!_views.TryGetValue(targetId, out var view) ||
+                !board.TryGetBlock(targetId, out var block))
+            {
+                // Không tìm thấy view → fire ngay (No view found → fire immediately)
+                EventManager.PuzzleSolved.Invoke();
+                return;
+            }
+
+            // Tìm cạnh exit mà target đang chạm
+            // Find the exit edge the target is currently touching.
+            PuzzleFootprintUtility.FillCells(
+                block.Definition.shape, block.Definition.orientation,
+                block.Origin, _cellBuffer);
+
+            ExitEdge? exitEdge = null;
+            foreach (var exit in board.Exits)
+            {
+                foreach (var cell in _cellBuffer)
+                {
+                    if (IsCellTouchingExit(cell, exit, board.Width, board.Height))
+                    {
+                        exitEdge = exit.edge;
+                        break;
+                    }
+                }
+                if (exitEdge.HasValue) break;
+            }
+
+            if (!exitEdge.HasValue)
+            {
+                EventManager.PuzzleSolved.Invoke();
+                return;
+            }
+
+            // Tính hướng visual và khoảng cách cần trượt
+            // Compute visual direction and slide distance.
+            var rect    = view.GetComponent<RectTransform>();
+            var dir     = GetVisualExitDirection(exitEdge.Value);
+            var dist    = dir.x != 0
+                ? _totalBoardW + rect.sizeDelta.x
+                : _totalBoardH + rect.sizeDelta.y;
+            var endPos  = rect.anchoredPosition + dir * dist;
+
+            Debug.Log($"[Puzzle] Exit animation → {exitEdge.Value}, dir={dir}, dist={dist:F0}px", this);
+
+            Tween.UIAnchoredPosition(rect, endPos, exitAnimationDuration, Ease.InCubic)
+                 .OnComplete(static () => EventManager.PuzzleSolved.Invoke());
+        }
+
+        /// <summary>Kiểm tra ô <paramref name="cell" /> có chạm exit không. (Check if a cell touches an exit.)</summary>
+        private static bool IsCellTouchingExit(Vector2Int cell, ExitGateDefinition exit, int boardW, int boardH)
+        {
+            return exit.edge switch
+            {
+                ExitEdge.Left   => cell.x == 0          && exit.ContainsIndex(cell.y),
+                ExitEdge.Right  => cell.x == boardW - 1 && exit.ContainsIndex(cell.y),
+                ExitEdge.Top    => cell.y == boardH - 1 && exit.ContainsIndex(cell.x),
+                ExitEdge.Bottom => cell.y == 0          && exit.ContainsIndex(cell.x),
+                _               => false
+            };
+        }
+
+        /// <summary>
+        ///     Chuyển ExitEdge thành hướng visual (có tính invertY).
+        ///     (Converts an ExitEdge to a visual 2D direction, respecting invertY.)
+        /// </summary>
+        private Vector2 GetVisualExitDirection(ExitEdge edge)
+        {
+            return edge switch
+            {
+                ExitEdge.Right  => Vector2.right,
+                ExitEdge.Left   => Vector2.left,
+                // invertY=true: board Top (row Height-1) = visual bottom → move down
+                // invertY=false: board Top = visual top → move up
+                ExitEdge.Top    => invertY ? Vector2.down : Vector2.up,
+                ExitEdge.Bottom => invertY ? Vector2.up   : Vector2.down,
+                _               => Vector2.right
+            };
         }
 
         // ── Grid background (Lưới) ────────────────────────────────────────────────────
@@ -554,7 +661,7 @@ namespace Puzzle.Presentation
                 rect.anchorMax        = new Vector2(0.5f, 0.5f);
                 rect.pivot            = new Vector2(0f,   1f);
                 rect.anchoredPosition = CellToAnchoredPosition(new Vector2Int(c, r));
-                rect.sizeDelta        = cellSize;
+                rect.sizeDelta        = _actualCellSize;
 
                 _gridCells.Add(view);
             }

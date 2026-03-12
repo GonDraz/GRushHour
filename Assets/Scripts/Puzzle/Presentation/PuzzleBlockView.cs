@@ -54,10 +54,23 @@ namespace Puzzle.Presentation
 
         private Vector2 _dragStart;
         private PuzzleBoardPresenter _presenter;
+        // Cache canvas để chuyển đổi delta từ screen-pixel sang canvas-pixel.
+        // Cached canvas reference used to convert drag delta from screen pixels to canvas pixels.
+        private Canvas _canvas;
 
         public string BlockId { get; private set; }
 
         // ── Drag ─────────────────────────────────────────────────────────────────────
+
+        // Chuyển delta screen-pixel sang canvas-pixel bằng cách chia cho scaleFactor của Canvas.
+        // Converts a screen-pixel drag delta to canvas-pixel space by dividing by the Canvas scaleFactor.
+        // Cần thiết vì PointerEventData.position là tọa độ màn hình, còn anchoredPosition là tọa độ canvas.
+        // Necessary because PointerEventData.position is in screen space while anchoredPosition is in canvas space.
+        private Vector2 ToCanvasDelta(Vector2 screenDelta)
+        {
+            var sf = (_canvas != null) ? _canvas.scaleFactor : 1f;
+            return sf > 0f ? screenDelta / sf : screenDelta;
+        }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -68,13 +81,13 @@ namespace Puzzle.Presentation
         public void OnDrag(PointerEventData eventData)
         {
             if (_presenter == null || string.IsNullOrEmpty(BlockId)) return;
-            _presenter.PreviewDrag(BlockId, eventData.position - _dragStart);
+            _presenter.PreviewDrag(BlockId, ToCanvasDelta(eventData.position - _dragStart));
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
             if (_presenter == null || string.IsNullOrEmpty(BlockId)) return;
-            _presenter.TryApplyDrag(BlockId, eventData.position - _dragStart);
+            _presenter.TryApplyDrag(BlockId, ToCanvasDelta(eventData.position - _dragStart));
         }
 
         // ── Bind ─────────────────────────────────────────────────────────────────────
@@ -83,6 +96,7 @@ namespace Puzzle.Presentation
         {
             BlockId = blockId;
             _presenter = presenter;
+            _canvas = GetComponentInParent<Canvas>();
             gameObject.name = $"Block_{blockId}";
 
             if (blockImage == null)

@@ -92,7 +92,7 @@ namespace GonDraz.ObjectPool
             member.IsInPool = false;
 
             obj.SetActive(true);
-            obj.transform.SetParent(parent);
+            obj.transform.SetParent(parent, false);
             obj.GetComponent<IPoolable>()?.OnGetFromPool();
         }
 
@@ -104,7 +104,7 @@ namespace GonDraz.ObjectPool
 
             var member = obj.GetComponent<PoolMember>();
             member.IsInPool = true;
-            if (obj.activeSelf) obj.transform.SetParent(_root);
+            if (obj.activeSelf) obj.transform.SetParent(_root, false);
             if (obj.activeSelf) obj.SetActive(false);
         }
 

@@ -21,5 +21,10 @@ namespace UI.Screens
             GlobalStateMachine.Change<GlobalStateMachine.InGameState>(false);
             EventManager.SetupGameplay.Invoke();
         }
+
+        public void OnHomeButtonClick()
+        {
+            GlobalStateMachine.Change<GlobalStateMachine.MenuState>(false);
+        }
     }
 }
